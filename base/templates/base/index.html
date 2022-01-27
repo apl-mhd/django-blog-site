@@ -1,0 +1,29 @@
+{% extends "main.html" %}
+
+
+{% block content %}
+
+    
+    <div class="row pt-5">
+        {% for post in posts %}
+            <div class="col-md-4 mt-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title"> {{post.title}} </h5>
+                        <h6 class="card-subtitle">@{{ post.author}} <i>{{post.created_on}}</i></h6>
+                        <p class="card-text mt-5">{{post.content}}</p>
+
+                        <a  class="btn btn-primary">Read</a>
+                        {% if user.is_authenticated and user == post.author %}
+                        <a href="{% url 'post-update' post.id %}" class="btn btn-success">Update</a>
+                        <a href="{% url 'post-delete' post.id %}" class="btn btn-danger">Delete</a>
+                        {% endif %}
+                       
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+   
+{% endblock content %}
+

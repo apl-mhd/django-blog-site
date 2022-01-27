@@ -1,0 +1,14 @@
+{% extends "main.html" %}
+
+{% block content %}
+  <div class="row">
+
+     <diva class="card">
+         <div class="card-body">
+             <p class="card-title">{{post}}</p>
+            <a  class="btn btn-danger" href="{% url 'post-delete-success' post.id%}">Delete Confirm</a>
+             <a class="btn btn-success" href="{% url 'index' %}">Back</a>
+         </div>
+     </diva>
+  </div>
+{% endblock content %}
